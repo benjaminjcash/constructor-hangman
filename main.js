@@ -96,8 +96,17 @@ function displayProgress(arr, letter) {
                 startGuessing(arr);
             } else {
                 console.log("\nYou win!\n".rainbow);
-                console.log("\nHere is the next word:".yellow);
-                newGame();
+                inquirer.prompt([
+                    {
+                        type: "confirm",
+                        message: "Play Again?",
+                        name: "playagain"
+                    }
+                ]).then(function (res) {
+                    if (res.playagain) {
+                        newGame();
+                    };
+                })   
             }
         } else {
             //checks if the letter was already guessed. If not, decreases remainingGuesses and logs incorrect guess message, adds letter to 
