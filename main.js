@@ -117,8 +117,18 @@ function displayProgress(arr, letter) {
             //checks if the user has any guesses left. If not, prompts a loss and starts a new game.
             if(remainingGuesses === 0) {
                 console.log("\nYou Lose...\n".bgCyan)
-                console.log("\nTry again!\n".bgCyan)                
-                newGame();
+                console.log("\nTry again!\n".bgCyan)
+                inquirer.prompt([
+                    {
+                        type: "confirm",
+                        message: "Play Again?",
+                        name: "playagain"
+                    }
+                ]).then(function(res) {
+                    if (res.playagain) {
+                        newGame();
+                    };
+                })                
             } else {
                 startGuessing(arr);
             }
