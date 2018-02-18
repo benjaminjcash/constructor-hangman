@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
+    "colors": "^1.1.2",
     "inquirer": "^5.1.0"
   },
   "devDependencies": {},
